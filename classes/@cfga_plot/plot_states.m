@@ -17,14 +17,6 @@ fnl_max_exist = cfnl.fnl.fnl_max_exist;
 T_LIM = obj.scale_time(obj.t_lim);
 X_LIM = obj.scale_state(obj.x_lim);
 
-% manually overwrite the state limits
-% X_LIM(1,:)  = [ -6, 6 ];
-% X_LIM(2,:)  = [ -50, 300 ];
-% X_LIM(3,:)  = [ -30, 30 ];
-% X_LIM(4,:)  = [ 0, 450 ];
-% X_LIM(5,:)  = [ -40, 10 ];
-% X_LIM(6,:)  = [ -5, 5 ];
-
 N_plot = 50;
 t_plot = linspace(obj.t_lim(1),obj.t_lim(2),N_plot);
 T_PLOT = obj.scale_time( t_plot );
@@ -73,24 +65,26 @@ for ii = 1:nx
             Q = cfnl.Q;
             [~,Qh_temp] = cfga.project_ellip(Q,ii);
             Qh_temp = obj.scale_state(Qh_temp*Ix(:,ii));
+            Qh_temp = Qh_temp(ii);
             cfnl.t = tk(2);
             Qp = cfnl.Q;
             [~,Qhp_temp] = cfga.project_ellip(Qp,ii);
             Qhp_temp = obj.scale_state(Qhp_temp*Ix(:,ii));
+            Qhp_temp = Qhp_temp(ii);
             
-%             if (ii==1 && k==1)
-%                 fill([ Tk(1), Tk(2), Tk(2), Tk(1) ],...
-%                      [ Xk(1)+Qh_temp, Xk(2)+Qhp_temp, ...
-%                        Xk(2)-Qhp_temp, Xk(1)-Qh_temp ],...
-%                      col.gr,'FaceAlpha',0.5,'LineStyle','none',...
-%                      'DisplayName','Funnel')
-%             else
+            if (ii==1 && k==1)
+                fill([ Tk(1), Tk(2), Tk(2), Tk(1) ],...
+                     [ Xk(1)+Qh_temp, Xk(2)+Qhp_temp, ...
+                       Xk(2)-Qhp_temp, Xk(1)-Qh_temp ],...
+                     col.gr,'FaceAlpha',0.5,'LineStyle','none',...
+                     'DisplayName','Funnel')
+            else
                 fill([ Tk(1), Tk(2), Tk(2), Tk(1) ],...
                      [ Xk(1)+Qh_temp, Xk(2)+Qhp_temp, ...
                        Xk(2)-Qhp_temp, Xk(1)-Qh_temp ],...
                      col.gr,'FaceAlpha',0.5,'LineStyle','none',...
                      'HandleVisibility','off')
-%             end
+            end
              
         elseif (fnl_max_exist)
             cfnl.t = tk(1);

@@ -19,9 +19,5 @@ classdef bnds_T
         terminal_set(:,1) double
     end
     
-    properties (Hidden)
-       max_tilt(1,1) double
-    end
-    
 end
 

@@ -59,7 +59,7 @@ switch obj.opts.nlg_method
         fprintf('done.\n')
         
     case 'nlp'
-        
+        % not yet implemented
 end
 
 end

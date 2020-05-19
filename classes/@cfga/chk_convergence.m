@@ -28,9 +28,6 @@ for k = 1:nid
 end
 
 % print some stuff
-% fprintf('\t\t r [m]  v [m/s] \n')
-% fprintf('\t\t %4.2f%s   %4.2f%s\n',...
-%         diff(1),txt{1},diff(2),txt{2});
 fprintf('\t\t r [m]  v [m/s]  a [deg]  w [deg/s]\n')
 fprintf('\t\t %4.2f%s   %4.2f%s    %4.2f%s    %4.2f%s\n',...
         diff(1),txt{1},diff(2),txt{2},...
@@ -46,8 +43,8 @@ if (sum(cvrg)>=obj.opts.cvrg_min)
         % convergence tolerance, exit if these pass since we've already
         % satisfied the minimum number of convergence checks
         temp = true;
-        for k = 1:numel(not_cvrg)
-           if (diff(k) < 1.5 * tol(k))
+        for k = not_cvrg
+           if (diff(k) > 1.5 * tol(k))
                temp = false;
            end
         end

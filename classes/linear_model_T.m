@@ -21,7 +21,7 @@ classdef linear_model_T < handle
             nu = cfnl.nu;
             id_v = cfnl.pars.id_v;
             id_a = cfnl.pars.id_a;
-            id_w = cfnl.pars.id_w;
+%             id_w = cfnl.pars.id_w;
             
             % velocity to velocity
             obj.add_state_nonlinearity(id_v,id_v,nx,nu);
@@ -29,12 +29,12 @@ classdef linear_model_T < handle
             % attitude to velocity
             obj.add_state_nonlinearity(id_a,id_v,nx,nu);
             
-%             % control to velocity
+            % control to velocity
 %             obj.add_control_nonlinearity(id_v,nx,nu);
-%             
-%             % control to angular velocity
+            
+            % control to angular velocity
 %             obj.add_control_nonlinearity(id_w,nx,nu);
-%             
+            
             % add the number of nonlinear channels
             obj.np = numel(obj.C);
             

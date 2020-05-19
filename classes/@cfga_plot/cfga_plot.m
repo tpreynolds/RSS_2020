@@ -8,9 +8,9 @@ classdef cfga_plot < handle
         col(1,1) struct
         pars(1,1) struct
         
+        make_rss(1,1) logical = false
         make_state(1,1) logical = false
         make_control(1,1) logical = false
-        make_eig(1,1) logical = false
         
         sim_data(1,1) struct
         sim_exist(1,1) logical = false
@@ -72,15 +72,15 @@ classdef cfga_plot < handle
            if (obj.make_control)
                obj.plot_controls(cfnl)
            end
-           if (obj.make_eig)
-               obj.plot_eig(cfnl)
+           if (obj.make_rss)
+               obj.plot_rss(cfnl)
            end
         end
         
         plot_states(obj,cfnl);
         plot_controls(obj,cfnl);
         plot_fill_ratio(obj,cfnl);
-        plot_eig(obj,cfnl);
+        plot_rss(obj,cfnl);
     end
     
 end

@@ -151,8 +151,8 @@ classdef cfga < handle
             P = In/Q;
             % the ldl decomposition here is more robust than the cholesky
             % since Yalmip can produce some solutions that have a very
-            % small negative eigenvalue. Mathematically this procedure is
-            % identical, but ldl does not throw an error if P is not pos.
+            % small negative eigenvalues. Mathematically this procedure is
+            % identical, but ldl does not throw an error if P is not pos
             % def. Moreover, the factor L is not necessarily lower
             % triangular since ldl does some pivoting that a cholesky
             % factorization does not need to do. However, the results are
@@ -187,19 +187,17 @@ classdef cfga < handle
                     % compute bounding box
                     bbox = zeros(n,2);
                     for k = 1:n
-                        bbox(k,2) = sqrt( cfga.project_ellip(Q,k) );
+                        [~,bbox(k,2)] = cfga.project_ellip(Q,k);
                     end
                     bbox(:,1) = - bbox(:,2);
-                    tries = 1;
-                    while (tries < 25)
+                    outside = true;
+                    while outside 
                         % sample
                         xs = bbox(:,1) + (bbox(:,2)-bbox(:,1)).*rand(n,1);
                         % test
                         val = (xs-xc)'*(Q\(xs-xc));
                         if (val<1.001)
-                            break;
-                        else
-                            tries = tries + 1;
+                            outside = false;
                         end
                     end
             end
