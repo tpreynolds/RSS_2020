@@ -159,6 +159,66 @@ if (obj.sim_exist)
     ylabel('$V(t)$')
 end
 
+%% Obstacle figure
+
+figure(3), clf
+gp = panel();
+gp.select();
+hold on, grid on, box on
+gp.margin = [17,16,3,3];
+pos = get(gca,'Position');
+set(gcf,'Position',[pos(1),pos(2),wdth,hght]);
+id = 1:2;
+% plot funnels
+for k = 1:N_plot-1
+    tk = t_plot(k);
+    Xk = X_NOM(id,k);
+    
+    cfnl.t = tk(1);
+    Q = cfnl.Q;
+    [~,Qh_temp] = cfga.project_ellip(Q,id);
+    Qh_temp = Xk + Qh_temp * obj.circle;
+
+    if (k==1)
+        fill(Qh_temp(1,:),Qh_temp(2,:),...
+            col.gr,'FaceAlpha',0.5,'LineStyle','none',...
+            'DisplayName','Funnel')
+    else
+        fill(Qh_temp(1,:),Qh_temp(2,:),...
+            col.gr,'FaceAlpha',0.5,'LineStyle','none',...
+            'HandleVisibility','off')
+    end
+end
+% add sim data if it exists
+if (obj.sim_exist)
+    for sim = 1:sim_data.Nsim
+        X_SIM = sim_data.x_sim{sim}(id,:);
+        if (sim == 1)
+            plot(X_SIM(1,:),X_SIM(2,:),'Color',col.r,...
+                'DisplayName','Test case')
+        else
+            plot(X_SIM(1,:),X_SIM(2,:),'Color',col.r,...
+                'HandleVisibility','off')
+        end
+    end
+end
+% plot obstacle
+obs_temp = cfnl.pars.xc + cfnl.pars.H * obj.circle;
+fill(obs_temp(1,:),obs_temp(2,:),col.dr,...
+        'FaceAlpha',0.8,'LineStyle','-','LineWidth',1,...
+        'EdgeColor','r','DisplayName','Obstacle')
+% plot nominal
+plot(X_NOM(id(1),:),X_NOM(id(2),:),'Color',col.b,'DisplayName','Nominal')
+% create legend
+    [~,h_leg] = legend('show','location','northwest');
+    PiL = findobj(h_leg,'type','patch');
+    set(PiL(1),'FaceAlpha',0.5);
+
+set(gca,'XLim',X_LIM(id(1),:),'YLim',X_LIM(id(2),:),...
+    'XTick',X_TIK{id(1)},...
+    'YTick',X_TIK{id(2)})
+xlabel(strcat('$',obj.pars.state_labels{id(1)},'$'))
+ylabel(strcat('$',obj.pars.state_labels{id(2)},'$'))
 
 end
 
