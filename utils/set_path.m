@@ -6,7 +6,7 @@ addpath('../classes/')
 
 % add the Yalmip files
 try
-    yalmiproot = '../../Desktop/YALMIP-master/';
+    yalmiproot = 'YALMIP/';
     addpath(yalmiproot)
     addpath(strcat(yalmiproot,'extras'))
     addpath(strcat(yalmiproot,'solvers'))
@@ -22,9 +22,12 @@ catch
     return;
 end
 
-% add the mosek files
+% add the solver files
 try
-    addpath(genpath('../../Desktop/mosek/9.1/toolbox/r2015a/'))
+    solverroot = '../../Desktop/mosek/9.1/toolbox/r2015a/';
+    addpath(genpath(solverroot))
+    clear solverroot
 catch
-    fprintf('Did not find a MOSEK installation on the Desktop, stopping')
+    fprintf('Did not find a SOLVER installation in the specified')
+    fprintf(' directory, stopping')
 end

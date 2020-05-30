@@ -1,0 +1,4 @@
+[submodule "utils/YALMIP"]
+	path = utils/YALMIP
+	url = git@github.com:yalmip/YALMIP.git
+	branch = master

@@ -9,7 +9,7 @@ cfnl = cfga('planarquad');
 cfnl.opts.cvrg_min      = 3;
 cfnl.opts.max_iter      = 10;
 cfnl.opts.decay_rate    = 0.01;
-cfnl.opts.lmi_tol       = 0;
+cfnl.opts.lmi_tol       = 0;git s
 cfnl.plot.make_rss      = true;
 
 % variable contraction parameters
