@@ -2,14 +2,14 @@
 
 This code accompanies the paper submitted to the RSS 2020 workshop titled "PAPER_TITLE" by Taylor P. Reynolds, Danylo Malyuta, Mehran Mesbahi and Behcet Acikmese from the University of Washington.
 
-## Basics
-
-Using a simple 2D planar quadrotor model, this code computes a funnel around a pre-set nominal trajectory in order to demonstrate the use of temporally-interpolated quadratic Lyapunov functions. 
+Using a simple 2D planar quadrotor model, the code computes a funnel around a pre-set nominal trajectory in order to demonstrate the use of temporally-interpolated quadratic Lyapunov functions. 
 
 ## Installation Guide
 
 To use this code, you will need to clone the repository and include the submodule YALMIP. Using
+
 `git clone --recurse-submodules git@github.com:tpreynolds/RSS_2020.git`
+
 should do the trick. *You will need to install an additional solver to use the code*. 
 
 ### Solver Specifics
@@ -26,7 +26,7 @@ Depending on where the solver is installed on your machine, you may need to edit
 
 This repository is free of charge to use and is openly distributed, but note that
 
-1. The following reference must be used if this code is used in a published work, or in preparation/validation of the results in a published work.:
+1. The following reference must be used if this code is used in a published work, or in preparation/validation of the results in a published work:
 > Taylor P. Reynolds, Danlyo Malyuta, Mehran Mesbahi and Behcet Acikmese, "PAPER_TITLE," 2nd RSS Workshop on Robust Autonomy, July 2020.
 
 2. Use of this repository is subject to the copyright and licenses of YALMIP and any solvers used.
