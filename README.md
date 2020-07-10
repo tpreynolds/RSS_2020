@@ -1,6 +1,6 @@
 # Continuous Funnel Generation Algorithm
 
-This code accompanies the paper submitted to the RSS 2020 workshop titled "PAPER_TITLE" by Taylor P. Reynolds, Danylo Malyuta, Mehran Mesbahi and Behcet Acikmese from the University of Washington.
+This code accompanies the paper submitted to the RSS 2020 workshop titled "Temporally-Interpolated Funnel Synthesis for Nonlinear Systems" by Taylor P. Reynolds, Danylo Malyuta, Mehran Mesbahi and Behcet Acikmese from the University of Washington.
 
 Using a simple 2D planar quadrotor model, the code computes a funnel around a pre-set nominal trajectory in order to demonstrate the use of temporally-interpolated quadratic Lyapunov functions. 
 
@@ -27,7 +27,7 @@ Depending on where the solver is installed on your machine, you may need to edit
 This repository is free of charge to use and is openly distributed, but note that
 
 1. The following reference must be used if this code is used in a published work, or in preparation/validation of the results in a published work:
-> Taylor P. Reynolds, Danlyo Malyuta, Mehran Mesbahi and Behcet Acikmese, "PAPER_TITLE," 2nd RSS Workshop on Robust Autonomy, July 2020.
+> Taylor P. Reynolds, Danlyo Malyuta, Mehran Mesbahi and Behcet Acikmese, "Temporally-Interpolated Funnel Synthesis for Nonlinear Systems," 2nd RSS Workshop on Robust Autonomy, July 2020.
 
 2. Use of this repository is subject to the copyright and licenses of YALMIP and any solvers used.
 
